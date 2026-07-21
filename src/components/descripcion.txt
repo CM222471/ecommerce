@@ -1,0 +1,2 @@
+Aqui se guardaron todos los componentes reutilizables
+osea lo que formara el ecommerce

@@ -1,0 +1,1 @@
+aqui se guardaran las interfaces de typscript

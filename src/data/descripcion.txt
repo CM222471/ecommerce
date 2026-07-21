@@ -1,0 +1,2 @@
+aqui se guardaran los datos
+como podrian ser productos.json 
