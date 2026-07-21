@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "nombre": "Laptop Lenovo IdeaPad 5",
+    "descripcion": "Laptop de 15.6 pulgadas con procesador Intel Core i5 y 16 GB de RAM.",
+    "precio": 749.99,
+    "categoria": "Computadoras",
+    "imagen": "/images/products/lenovo-ideapad-5.jpg",
+    "stock": 8
+  },
+  {
+    "id": 2,
+    "nombre": "MacBook Air M3",
+    "descripcion": "Laptop ultradelgada con chip M3 y pantalla Retina de 13 pulgadas.",
+    "precio": 1299.99,
+    "categoria": "Computadoras",
+    "imagen": "/images/products/macbook-air-m3.jpg",
+    "stock": 5
+  },
+  {
+    "id": 3,
+    "nombre": "ASUS ROG Strix G16",
+    "descripcion": "Laptop gamer con Intel Core i7, RTX 4060 y 16 GB de RAM.",
+    "precio": 1599.99,
+    "categoria": "Computadoras",
+    "imagen": "/images/products/asus-rog-strix-g16.jpg",
+    "stock": 4
+  },
+  {
+    "id": 4,
+    "nombre": "Samsung Galaxy S24",
+    "descripcion": "Smartphone con pantalla AMOLED de 6.2 pulgadas y cámara de 50 MP.",
+    "precio": 899.99,
+    "categoria": "Telefonos",
+    "imagen": "/images/products/samsung-galaxy-s24.jpg",
+    "stock": 12
+  },
+  {
+    "id": 5,
+    "nombre": "iPhone 16",
+    "descripcion": "Teléfono inteligente con chip A18 y pantalla Super Retina XDR.",
+    "precio": 1099.99,
+    "categoria": "Telefonos",
+    "imagen": "/images/products/iphone-16.jpg",
+    "stock": 10
+  },
+  {
+    "id": 6,
+    "nombre": "Xiaomi Redmi Note 14",
+    "descripcion": "Smartphone con pantalla AMOLED de 120 Hz y batería de larga duración.",
+    "precio": 349.99,
+    "categoria": "Telefonos",
+    "imagen": "/images/products/redmi-note-14.jpg",
+    "stock": 15
+  },
+  {
+    "id": 7,
+    "nombre": "Apple Watch Series 10",
+    "descripcion": "Smartwatch con monitoreo de salud y GPS integrado.",
+    "precio": 499.99,
+    "categoria": "Smartwatch",
+    "imagen": "/images/products/apple-watch-series-10.jpg",
+    "stock": 7
+  },
+  {
+    "id": 8,
+    "nombre": "Samsung Galaxy Watch 7",
+    "descripcion": "Reloj inteligente con seguimiento deportivo y sensor de frecuencia cardíaca.",
+    "precio": 349.99,
+    "categoria": "Smartwatch",
+    "imagen": "/images/products/galaxy-watch-7.jpg",
+    "stock": 9
+  },
+  {
+    "id": 9,
+    "nombre": "Huawei Watch GT 5",
+    "descripcion": "Smartwatch con batería de larga duración y pantalla AMOLED.",
+    "precio": 269.99,
+    "categoria": "Smartwatch",
+    "imagen": "/images/products/huawei-watch-gt5.jpg",
+    "stock": 11
+  },
+  {
+    "id": 10,
+    "nombre": "Monitor LG UltraGear 27\"",
+    "descripcion": "Monitor gaming QHD de 165 Hz con tecnología IPS.",
+    "precio": 399.99,
+    "categoria": "Monitores",
+    "imagen": "/images/products/lg-ultragear-27.jpg",
+    "stock": 6
+  },
+  {
+    "id": 11,
+    "nombre": "Samsung Odyssey G5",
+    "descripcion": "Monitor curvo QHD de 32 pulgadas y 144 Hz.",
+    "precio": 429.99,
+    "categoria": "Monitores",
+    "imagen": "/images/products/samsung-odyssey-g5.jpg",
+    "stock": 8
+  },
+  {
+    "id": 12,
+    "nombre": "Dell UltraSharp U2724D",
+    "descripcion": "Monitor profesional de 27 pulgadas con resolución QHD.",
+    "precio": 519.99,
+    "categoria": "Monitores",
+    "imagen": "/images/products/dell-ultrasharp-u2724d.jpg",
+    "stock": 5
+  },
+  {
+    "id": 13,
+    "nombre": "Sony WH-1000XM5",
+    "descripcion": "Audífonos inalámbricos con cancelación de ruido.",
+    "precio": 379.99,
+    "categoria": "Audio",
+    "imagen": "/images/products/sony-wh1000xm5.jpg",
+    "stock": 10
+  },
+  {
+    "id": 14,
+    "nombre": "JBL Charge 5",
+    "descripcion": "Altavoz Bluetooth portátil con sonido potente y resistente al agua.",
+    "precio": 179.99,
+    "categoria": "Audio",
+    "imagen": "/images/products/jbl-charge-5.jpg",
+    "stock": 14
+  },
+  {
+    "id": 15,
+    "nombre": "AirPods Pro 2",
+    "descripcion": "Auriculares inalámbricos con audio espacial y cancelación de ruido.",
+    "precio": 249.99,
+    "categoria": "Audio",
+    "imagen": "/images/products/airpods-pro-2.jpg",
+    "stock": 13
+  },
+  {
+    "id": 16,
+    "nombre": "Teclado Mecánico Redragon K552",
+    "descripcion": "Teclado mecánico RGB con switches Outemu Blue.",
+    "precio": 59.99,
+    "categoria": "Perifericos",
+    "imagen": "/images/products/redragon-k552.jpg",
+    "stock": 20
+  },
+  {
+    "id": 17,
+    "nombre": "Mouse Logitech G502 X",
+    "descripcion": "Mouse gamer con sensor de alta precisión y botones programables.",
+    "precio": 79.99,
+    "categoria": "Perifericos",
+    "imagen": "/images/products/logitech-g502x.jpg",
+    "stock": 18
+  },
+  {
+    "id": 18,
+    "nombre": "Webcam Logitech C920",
+    "descripcion": "Cámara web Full HD ideal para videollamadas y streaming.",
+    "precio": 89.99,
+    "categoria": "Perifericos",
+    "imagen": "/images/products/logitech-c920.jpg",
+    "stock": 12
+  },
+  {
+    "id": 19,
+    "nombre": "SSD Externo Samsung T9 1TB",
+    "descripcion": "Unidad de almacenamiento portátil USB-C de alta velocidad.",
+    "precio": 159.99,
+    "categoria": "Perifericos",
+    "imagen": "/images/products/samsung-t9-1tb.jpg",
+    "stock": 9
+  },
+  {
+    "id": 20,
+    "nombre": "Monitor ASUS ProArt 27\"",
+    "descripcion": "Monitor 4K diseñado para edición de fotografía y video.",
+    "precio": 599.99,
+    "categoria": "Monitores",
+    "imagen": "/images/products/asus-proart-27.jpg",
+    "stock": 4
+  }
+]
