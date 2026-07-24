@@ -20,20 +20,24 @@ return(
     />
 
     <div className="p-4">
+  <h3 className="text-lg font-bold mb-2">
+    {producto.nombre}
+  </h3>
 
-        <h3 className="text-lg font-bold mb-2">
-            {producto.nombre}
-        </h3>
+  <p className="text-gray-600 text-sm mb-3">
+    {producto.descripcion}
+  </p>
 
-        <p className="text-gray-600 text-sm mb-3">
-            {producto.descripcion}
-        </p>
+  <p className="text-2xl font-bold text-blue-600 mb-4">
+    ${producto.precio}
+  </p>
 
-        <p className="text-2xl font-bold text-blue-600">
-            ${producto.precio}
-        </p>
-
-    </div>
+  <button className="w-full bg-blue-600 text-white py-2 rounded-full font-medium hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
+    <span className="material-symbols-outlined text-[18px]">
+    </span>
+    Agregar al carrito
+  </button>
+</div>
 
 </div>
 );
