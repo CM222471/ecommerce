@@ -3,6 +3,7 @@ import {useState} from "react";
 import productos from "../data/productos.json";
 import ProductCard from "../components/ProductCard";
 import Producto from "../interfaces/Producto";
+import NabBar from "../components/NabBar";
 
 const categorias: string[] = ["todas", ...Array.from(new Set(productos.map(p=> p.categoria)))];
 
@@ -12,7 +13,9 @@ export default function Home() {
   const productosFiltrados : Producto[] = categoriaActiva === "todas" ? productos : productos.filter(p => p.categoria ===categoriaActiva);
 
   return  (
-    
+    <>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+    < NabBar />
       <main className="max-w-7xl mx-auto p-8">
         <h1 className="text-4xl font-bold mb-8 text-center"> Catálogo de Productos </h1>
            <nav className="flex flex-wrap justify-center gap-3 mb-8">
@@ -34,5 +37,6 @@ export default function Home() {
              {productosFiltrados.map((p) => ( <ProductCard key={p.id} producto={p} /> ))}
        </div>
     </main>
+    </>
   );
 }

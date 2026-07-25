@@ -20,6 +20,7 @@ const CarritoSlice = createSlice({
         } else {
             state.carrito.push({ ...producto, cantidad: 1 });   
         }
+        console.log("Producto agregado al carrito:", state.carrito.map(item => `${item.nombre} (Cantidad: ${item.cantidad})`).join(", "));
     }}
 })
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Producto from "../interfaces/Producto";
-
+import {useDispatch} from "react-redux";
+import { agregarAlCarrito } from "../redux/slices/CarritoSlice";
 
 interface ProductCardProps {
  producto:Producto;
@@ -8,6 +9,7 @@ interface ProductCardProps {
 
 export default function ProductCard({producto}: ProductCardProps){
 
+    const disPatch = useDispatch();
 return(
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
@@ -32,11 +34,13 @@ return(
     ${producto.precio}
   </p>
 
-  <button className="w-full bg-blue-600 text-white py-2 rounded-full font-medium hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
+  <button className="w-full bg-blue-600 text-white py-2 rounded-full font-medium hover:bg-blue-700 transition-all"
+   onClick={()=>disPatch(agregarAlCarrito(producto))}>
     <span className="material-symbols-outlined text-[18px]">
+        Agregar al carrito
     </span>
-    Agregar al carrito
-  </button>
+       
+    </button>
 </div>
 
 </div>
