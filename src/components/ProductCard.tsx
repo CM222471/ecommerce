@@ -12,39 +12,46 @@ export default function ProductCard({producto}: ProductCardProps){
 
     const dispatch = useDispatch();
     const handleAgregarProducto = () => { dispatch(agregarAlCarrito(producto)); mostrarToast("Producto agregado al carrito"); };
-return (
-  <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-4 hover:shadow-xl transition">
-    <div className="flex gap-4">
+
+    return (
+  <article className="h-full bg-white border border-orange-100 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-4">
+    <div className="flex gap-4 h-full">
       <Image
         src={producto.imagen}
-        alt={producto.nombre}
+        alt={`Imagen de ${producto.nombre}`}
         width={120}
         height={120}
-        className="w-32 h-32 rounded-xl object-cover flex-shrink-0"
+        className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover flex-shrink-0"
       />
 
-      <div className="flex flex-col flex-1">
-        <h3 className="text-xl font-bold text-stone-800">
+      <div className="flex-1 min-w-0 flex flex-col">
+        <h3 className="text-lg font-bold text-stone-800 leading-tight">
           {producto.nombre}
         </h3>
 
-        <p className="text-stone-600 mt-2 flex-1">
+        <p className="text-sm text-stone-600 mt-2 line-clamp-2">
           {producto.descripcion}
         </p>
 
-        <p className="text-2xl font-bold text-amber-700 mt-4">
-          ${producto.precio}
+        <p className="text-xl font-bold text-amber-700 mt-3">
+          ${producto.precio.toFixed(2)}
         </p>
 
         <button
-         onClick={handleAgregarProducto}
-          className="mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"> 
-          <span className="material-symbols-outlined"> shopping_cart </span>
-          Agregar al carrito
+          type="button"
+          onClick={handleAgregarProducto}
+          className="mt-auto pt-3"
+        >
+          <span className="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 px-3 rounded-lg font-semibold transition flex items-center justify-center gap-2">
+            <span className="material-symbols-outlined text-xl">
+              shopping_cart
+            </span>
+            Agregar
+          </span>
         </button>
       </div>
     </div>
-  </div>
+  </article>
 );
 
 }

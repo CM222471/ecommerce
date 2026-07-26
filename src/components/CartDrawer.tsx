@@ -114,11 +114,11 @@ const handleFinalizarCompra = async () => {
   onClose();
 
   await Swal.fire({
-    icon: "success",
-    title: "Compra realizada",
-    text: "La factura PDF se descargó correctamente.",
-    confirmButtonColor: "#d97706",
-  });
+  icon: "success",
+  title: "Compra realizada",
+  html: `La factura fue generada y enviada a <strong>${usuario.correo}</strong>.`,
+  confirmButtonColor: "#d97706",
+});
 };
 
 const router = useRouter();

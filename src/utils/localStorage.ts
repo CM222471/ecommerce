@@ -1,18 +1,28 @@
 import CarritoItem from "../interfaces/CarritoItem";
 
-const llave = "carrito";
+const CARRITO_KEY = "carrito";
 
-export function guardarCarrito(carrito: CarritoItem[]) {
-    localStorage.setItem(llave, JSON.stringify(carrito));
+export function guardarCarrito(carrito: CarritoItem[]): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.setItem(CARRITO_KEY, JSON.stringify(carrito));
+  } catch (error) {
+    console.error("No se pudo guardar el carrito:", error);
+  }
 }
 
 export function obtenerCarrito(): CarritoItem[] {
+  if (typeof window === "undefined") return [];
 
-    const carritoGuardado = localStorage.getItem(llave);
+  try {
+    const carritoGuardado = localStorage.getItem(CARRITO_KEY);
 
-    if (!carritoGuardado) {
-        return [];
-    }
+    if (!carritoGuardado) return [];
 
-    return JSON.parse(carritoGuardado);
+    return JSON.parse(carritoGuardado) as CarritoItem[];
+  } catch (error) {
+    console.error("No se pudo recuperar el carrito:", error);
+    return [];
+  }
 }
