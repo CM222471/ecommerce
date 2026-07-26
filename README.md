@@ -8,7 +8,7 @@ Vercel: https://ecommerce-j1.vercel.app/
 
 Video:
 
-Video: Reemplazar con el enlace del video.
+Video: https://udbedu.sharepoint.com/sites/LisFase1/_layouts/15/stream.aspx?id=%2Fsites%2FLisFase1%2FDocumentos%20compartidos%2FGeneral%2FRecordings%2Fecommerce%2DDesafio%201%2D20260725%5F224648%2DGrabaci%C3%B3n%20de%20la%20reuni%C3%B3n%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E668b760f%2D58af%2D43d9%2Da794%2D294ce7c32d8e
 
 Repositorio
 
