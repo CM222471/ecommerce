@@ -11,44 +11,42 @@ export default function ProductCard({producto}: ProductCardProps){
 
     const disPatch = useDispatch();
 return (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-orange-100">
+  <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-4 hover:shadow-xl transition">
+    <div className="flex gap-4">
+      <Image
+        src={producto.imagen}
+        alt={producto.nombre}
+        width={120}
+        height={120}
+        className="w-32 h-32 rounded-xl object-cover flex-shrink-0"
+      />
 
-        <Image
-            src={producto.imagen}
-            alt={producto.nombre}
-            width={300}
-            height={300}
-            className="w-full h-60 object-cover"
-        />
+      <div className="flex flex-col flex-1">
+        <h3 className="text-xl font-bold text-stone-800">
+          {producto.nombre}
+        </h3>
 
-        <div className="p-5">
+        <p className="text-stone-600 mt-2 flex-1">
+          {producto.descripcion}
+        </p>
 
-            <h3 className="text-xl font-bold text-stone-800 mb-2">
-                {producto.nombre}
-            </h3>
+        <p className="text-2xl font-bold text-amber-700 mt-4">
+          ${producto.precio}
+        </p>
 
-            <p className="text-stone-600 text-sm mb-4 line-clamp-2">
-                {producto.descripcion}
-            </p>
+        <button
+          onClick={() => disPatch(agregarAlCarrito(producto))}
+          className="mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
+        >
+          <span className="material-symbols-outlined">
+            shopping_cart
+          </span>
 
-            <p className="text-3xl font-bold text-amber-700 mb-5">
-                ${producto.precio}
-            </p>
-
-            <button
-                className="w-full bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition-all duration-200 active:scale-95 flex items-center justify-center gap-2"
-                onClick={() => disPatch(agregarAlCarrito(producto))}
-            >
-                <span className="material-symbols-outlined">
-                    shopping_cart
-                </span>
-
-                Agregar al carrito
-            </button>
-
-        </div>
-
+          Agregar al carrito
+        </button>
+      </div>
     </div>
+  </div>
 );
 
 }
