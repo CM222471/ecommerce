@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ECO-MMerce
 
-## Getting Started
+Aplicación de comercio electrónico desarrollada con Next.js, React y TypeScript como parte del Primer Desafío Práctico de la asignatura Diseño y Programación de Software Multiplataforma.
 
-First, run the development server:
+Sitio publicado
 
-```bash
+Vercel: https://ecommerce-j1.vercel.app/
+
+Video:
+
+Video: Reemplazar con el enlace del video.
+
+Repositorio
+
+https://github.com/CM222471/ecommerce
+
+Funcionalidades
+
+-Registro e inicio de sesión de usuarios.
+-Validación de formularios.
+-Catálogo dinámico con 20 productos.
+-Filtrado de productos por categorías.
+-Imágenes optimizadas mediante next/image.
+-Carrito de compras con Redux Toolkit.
+-Agregar productos al carrito.
+-Incrementar y disminuir cantidades.
+-Eliminar productos con confirmación.
+-Vaciar el carrito con confirmación.
+-Persistencia del carrito mediante localStorage.
+-Mensajes personalizados con SweetAlert2.
+-Generación de factura en formato PDF.
+-Simulación del envío de la factura al correo del usuario.
+-Diseño responsivo y enfoque Mobile First.
+-Despliegue continuo mediante GitHub y Vercel.
+
+
+Instalación
+
+Clonar el repositorio:
+
+git clone https://github.com/CM222471/ecommerce.git
+
+Entrar a la carpeta del proyecto:
+
+cd ecommerce
+
+Instalar las dependencias:
+
+npm install
+
+Ejecutar el servidor de desarrollo:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir en el navegador:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Compilación para producción
 
-## Learn More
+Para comprobar que el proyecto puede compilarse correctamente:
 
-To learn more about Next.js, take a look at the following resources:
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para ejecutar la versión de producción localmente:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+npm start
 
-## Deploy on Vercel
+Flujo de compra
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El usuario visualiza el catálogo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Filtra los productos por categoría.
+
+Agrega productos al carrito.
+
+Modifica las cantidades o elimina productos.
+
+El carrito se conserva después de recargar la página.
+
+Para finalizar la compra, el usuario debe iniciar sesión.
+
+Se genera una factura en formato PDF.
+
+Se muestra la simulación del envío de la factura al correo registrado.
+
+El carrito se vacía después de completar la compra.
+
+Persistencia de datos
+
+Los datos del proyecto se manejan de forma simulada:
+
+Los productos se almacenan en un archivo JSON.
+
+Los usuarios registrados se almacenan en localStorage.
+
+La sesión activa se almacena en localStorage.
+
+El carrito de compras se almacena en localStorage.
+
+Estructura principal
+
+src/
+├── app/
+├── components/
+├── data/
+├── interfaces/
+├── providers/
+├── redux/
+│   └── slices/
+└── utils/
+
+Autor
+
+Franklin Cruz Menjívar
+
+Universidad Don Bosco Ingeniería en Ciencias de la Computación
