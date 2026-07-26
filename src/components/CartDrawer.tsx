@@ -2,19 +2,22 @@
 import { useSelector } from "react-redux";
 import {RootState } from "../redux/store";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import {
+    incrementarCantidad,
+    disminuirCantidad,
+    eliminarProducto,
+} from "../redux/slices/CarritoSlice";
 
 interface CartDrawerProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-export default function CartDrawer({
-    isOpen,
-    onClose,
-}: CartDrawerProps) {
+export default function CartDrawer({isOpen, onClose,}: CartDrawerProps) {
  const carrito = useSelector( (state: RootState)=> state.cart.carrito)
     if (!isOpen) return null;
-
+const dispatch = useDispatch();
     return (
             <aside className="fixed top-0 right-0 h-screen w-96 bg-white shadow-2xl z-50 flex flex-col">
               <div className="flex justify-between items-center p-6 border-b">
@@ -65,9 +68,40 @@ export default function CartDrawer({
                         ${producto.precio}
                     </p>
 
-                    <p className="text-sm">
-                        Cantidad: {producto.cantidad}
-                    </p>
+                    <div className="flex items-center justify-between mt-4">
+
+    <div className="flex items-center gap-3">
+
+        <button
+            onClick={() => dispatch(disminuirCantidad(producto.id))}
+            className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300"
+        >
+            -
+        </button>
+
+        <span className="font-semibold">
+
+            {producto.cantidad}
+
+        </span>
+
+        <button
+            onClick={() => dispatch(incrementarCantidad(producto.id))}
+            className="w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+        >
+            +
+        </button>
+
+    </div>
+
+    <button
+        onClick={() => dispatch(eliminarProducto(producto.id))}
+        className="text-red-600 hover:text-red-700"
+    >
+        🗑️
+    </button>
+
+</div>
                     <p className="text-sm">
                         Total por Producto: ${producto.cantidad * producto.precio}
                     </p>
