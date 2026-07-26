@@ -1,11 +1,15 @@
 import {configureStore} from "@reduxjs/toolkit";
 import CarritoReducer from "./slices/CarritoSlice";
 import { guardarCarrito } from "../utils/localStorage";
+import authReducer from "./slices/AuthSlice";
 
 
 export const store = configureStore({
 
-    reducer:{ cart: CarritoReducer}
+    reducer:{ cart: CarritoReducer,
+              auth: authReducer
+    }
+    
 });
 
 store.subscribe(() => {

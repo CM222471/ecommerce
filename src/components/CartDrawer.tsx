@@ -25,145 +25,123 @@ const handleVaciarCarrito = () => {
     if (!confirmar) return; dispatch(vaciarCarrito());};
 
     return (
-    <>
-        {/* Fondo oscuro */}
-        <div
+  <>
+    <div
+      onClick={onClose}
+      className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      }`}
+    />
+
+    <aside
+      className={`fixed top-0 right-0 h-full w-96 bg-orange-50 shadow-2xl z-50 transition-transform duration-300 flex flex-col ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      }`}
+    >
+      <div className="bg-white border-b border-orange-200 p-6">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-bold text-amber-700">Mi Carrito</h2>
+
+          <button
             onClick={onClose}
-            className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
-                isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-            }`}
-        />
-
-        {/* Drawer */}
-        <aside
-            className={`fixed top-0 right-0 h-full w-96 bg-white shadow-2xl z-50 
-            transition-transform duration-300 flex flex-col ${
-                isOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-        >
-            {/* Encabezado */}
-            <div className="p-6 border-b">
-
-    <div className="flex justify-between items-center">
-
-        <h2 className="text-2xl font-bold">
-            Mi Carrito
-        </h2>
-
-        <button
-            onClick={onClose}
-            className="text-3xl hover:text-red-500"
-        >
+            className="text-3xl text-stone-500 hover:text-red-500 transition"
+          >
             ×
-        </button>
+          </button>
+        </div>
 
-    </div>
-
-    {carrito.length > 0 && (
-
-        <button
+        {carrito.length > 0 && (
+          <button
             onClick={handleVaciarCarrito}
-            className="mt-4 text-red-600 hover:text-red-700 text-sm font-semibold"
-        >
+            className="mt-4 text-red-500 hover:text-red-600 text-sm font-semibold"
+          >
             Vaciar carrito
-        </button>
+          </button>
+        )}
+      </div>
 
-    )}
+      <div className="flex-1 overflow-y-auto p-6">
+        {carrito.length === 0 ? (
+          <p className="text-stone-500 text-center mt-10">
+            Tu carrito está vacío.
+          </p>
+        ) : (
+          <div className="space-y-5">
+            {carrito.map((producto) => (
+              <div
+                key={producto.id}
+                className="flex gap-4 bg-white rounded-xl shadow-sm border border-orange-100 p-3"
+              >
+                <Image
+                  src={producto.imagen}
+                  alt={producto.nombre}
+                  width={80}
+                  height={80}
+                  className="rounded-lg object-cover"
+                />
 
-</div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-stone-800">
+                    {producto.nombre}
+                  </h3>
 
-            {/* Productos */}
-            <div className="flex-1 overflow-y-auto p-6">
-                {carrito.length === 0 ? (
-                    <p className="text-gray-500">
-                        Tu carrito está vacío.
-                    </p>
-                ) : (
-                    <div className="space-y-4">
-                        {carrito.map((producto) => (
-                            <div
-                                key={producto.id}
-                                className="flex gap-4 border-b pb-4"
-                            >
-                                <Image
-                                    src={producto.imagen}
-                                    alt={producto.nombre}
-                                    width={80}
-                                    height={80}
-                                    className="rounded-lg object-cover"
-                                />
+                  <p className="text-lg font-bold text-amber-700">
+                    ${producto.precio}
+                  </p>
 
-                                <div className="flex-1">
-                                    <h3 className="font-semibold">
-                                        {producto.nombre}
-                                    </h3>
+                  <div className="flex items-center justify-between mt-3">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() =>
+                          dispatch(disminuirCantidad(producto.id))
+                        }
+                        className="w-8 h-8 rounded-full bg-orange-100 hover:bg-orange-200 transition"
+                      >
+                        -
+                      </button>
 
-                                    <p className="text-sm text-gray-500">
-                                        ${producto.precio}
-                                    </p>
+                      <span className="font-semibold text-stone-700">
+                        {producto.cantidad}
+                      </span>
 
-                                    <div className="flex items-center justify-between mt-3">
-                                        <div className="flex items-center gap-3">
-                                            <button
-                                                onClick={() =>
-                                                    dispatch(
-                                                        disminuirCantidad(producto.id)
-                                                    )
-                                                }
-                                                className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300"
-                                            >
-                                                -
-                                            </button>
-
-                                            <span className="font-semibold">
-                                                {producto.cantidad}
-                                            </span>
-
-                                            <button
-                                                onClick={() =>
-                                                    dispatch(
-                                                        incrementarCantidad(producto.id)
-                                                    )
-                                                }
-                                                className="w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700"
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-
-                                        <button
-                                            onClick={() =>
-                                                dispatch(
-                                                    eliminarProducto(producto.id)
-                                                )
-                                            }
-                                            className="text-red-600 hover:text-red-700"
-                                        >
-                                            🗑️
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                      <button
+                        onClick={() =>
+                          dispatch(incrementarCantidad(producto.id))
+                        }
+                        className="w-8 h-8 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition"
+                      >
+                        +
+                      </button>
                     </div>
-                )}
-            </div>
 
-            {/* Footer */}
-            <div className="border-t p-6">
-                <div className="flex justify-between text-lg font-bold">
-                    <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <button
+                      onClick={() =>
+                        dispatch(eliminarProducto(producto.id))
+                      }
+                      className="text-red-500 hover:text-red-600 text-xl"
+                    >
+                      🗑️
+                    </button>
+                  </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
-                <button
-                    className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-                >
-                    Finalizar compra
-                </button>
-            </div>
-        </aside>
-    </>
+      <div className="bg-white border-t border-orange-200 p-6">
+        <div className="flex justify-between items-center text-xl font-bold">
+          <span className="text-stone-700">Total</span>
+          <span className="text-amber-700">${total.toFixed(2)}</span>
+        </div>
+
+        <button className="mt-5 w-full bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition-all duration-200 active:scale-95">
+          Finalizar compra
+        </button>
+      </div>
+    </aside>
+  </>
 );
 
 }
