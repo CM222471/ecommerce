@@ -2,6 +2,7 @@ import Image from "next/image";
 import Producto from "../interfaces/Producto";
 import {useDispatch} from "react-redux";
 import { agregarAlCarrito } from "../redux/slices/CarritoSlice";
+import { mostrarToast } from "../utils/mensajes";
 
 interface ProductCardProps {
  producto:Producto;
@@ -9,7 +10,8 @@ interface ProductCardProps {
 
 export default function ProductCard({producto}: ProductCardProps){
 
-    const disPatch = useDispatch();
+    const dispatch = useDispatch();
+    const handleAgregarProducto = () => { dispatch(agregarAlCarrito(producto)); mostrarToast("Producto agregado al carrito"); };
 return (
   <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-4 hover:shadow-xl transition">
     <div className="flex gap-4">
@@ -35,13 +37,9 @@ return (
         </p>
 
         <button
-          onClick={() => disPatch(agregarAlCarrito(producto))}
-          className="mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
-        >
-          <span className="material-symbols-outlined">
-            shopping_cart
-          </span>
-
+         onClick={handleAgregarProducto}
+          className="mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"> 
+          <span className="material-symbols-outlined"> shopping_cart </span>
           Agregar al carrito
         </button>
       </div>

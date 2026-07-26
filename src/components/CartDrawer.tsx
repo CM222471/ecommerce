@@ -9,6 +9,9 @@ import {
     eliminarProducto,
     vaciarCarrito
 } from "../redux/slices/CarritoSlice";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { generarFacturaPDF } from "../utils/generarFactura";
 
 interface CartDrawerProps {
     isOpen: boolean;
@@ -19,11 +22,107 @@ export default function CartDrawer({isOpen, onClose,}: CartDrawerProps) {
 const carrito = useSelector( (state: RootState)=> state.cart.carrito)
 const total = carrito.reduce( (acumulador, producto) => acumulador + producto.precio * producto.cantidad, 0);
 const dispatch = useDispatch();
-const handleVaciarCarrito = () => {
+const handleEliminarProducto = async (
+  id: number,
+  nombre: string
+) => {
+  const resultado = await Swal.fire({
+    icon: "warning",
+    title: "Eliminar producto",
+    text: `¿Deseas eliminar "${nombre}" del carrito?`,
+    showCancelButton: true,
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: "#dc2626",
+    cancelButtonColor: "#78716c",
+    reverseButtons: true,
+  });
 
-    const confirmar = window.confirm("¿Esta seguro de vaciar el carrito?"); 
-    if (!confirmar) return; dispatch(vaciarCarrito());};
+  if (resultado.isConfirmed) {
+    dispatch(eliminarProducto(id));
 
+    await Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: "Producto eliminado",
+      showConfirmButton: false,
+      timer: 1400,
+    });
+  }
+};
+const handleVaciarCarrito = async () => {
+  const resultado = await Swal.fire({
+    icon: "warning",
+    title: "Vaciar carrito",
+    text: "Se eliminarán todos los productos agregados.",
+    showCancelButton: true,
+    confirmButtonText: "Sí, vaciar",
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: "#dc2626",
+    cancelButtonColor: "#78716c",
+    reverseButtons: true,
+  });
+
+  if (!resultado.isConfirmed) return;
+
+  dispatch(vaciarCarrito());
+
+  await Swal.fire({
+    icon: "success",
+    title: "Carrito vacío",
+    text: "Todos los productos fueron eliminados.",
+    confirmButtonColor: "#d97706",
+  });
+};
+
+const handleFinalizarCompra = async () => {
+  if (carrito.length === 0) {
+    await Swal.fire({
+      icon: "info",
+      title: "Carrito vacío",
+      text: "Agrega productos antes de finalizar la compra.",
+      confirmButtonColor: "#d97706",
+    });
+
+    return;
+  }
+
+  if (!usuario) {
+    const resultado = await Swal.fire({
+      icon: "warning",
+      title: "Inicia sesión",
+      text: "Debes iniciar sesión para completar la compra.",
+      showCancelButton: true,
+      confirmButtonText: "Ir al login",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#d97706",
+      cancelButtonColor: "#78716c",
+    });
+
+    if (resultado.isConfirmed) {
+      onClose();
+      router.push("/login");
+    }
+
+    return;
+  }
+
+  generarFacturaPDF(carrito, usuario);
+
+  dispatch(vaciarCarrito());
+  onClose();
+
+  await Swal.fire({
+    icon: "success",
+    title: "Compra realizada",
+    text: "La factura PDF se descargó correctamente.",
+    confirmButtonColor: "#d97706",
+  });
+};
+
+const router = useRouter();
+const usuario = useSelector((state: RootState) => state.auth.usuario);
     return (
   <>
     <div
@@ -114,13 +213,8 @@ const handleVaciarCarrito = () => {
                       </button>
                     </div>
 
-                    <button
-                      onClick={() =>
-                        dispatch(eliminarProducto(producto.id))
-                      }
-                      className="text-red-500 hover:text-red-600 text-xl"
-                    >
-                      🗑️
+                    <button onClick={() => handleEliminarProducto(producto.id, producto.nombre)} className="text-red-500 hover:text-red-600 text-xl">
+                          🗑️
                     </button>
                   </div>
                 </div>
@@ -136,8 +230,9 @@ const handleVaciarCarrito = () => {
           <span className="text-amber-700">${total.toFixed(2)}</span>
         </div>
 
-        <button className="mt-5 w-full bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition-all duration-200 active:scale-95">
-          Finalizar compra
+        <button onClick={handleFinalizarCompra} disabled={carrito.length === 0}
+            className="mt-5 w-full bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition disabled:bg-stone-300 disabled:cursor-not-allowed">
+                Finalizar compra
         </button>
       </div>
     </aside>
