@@ -33,7 +33,9 @@ const CarritoSlice = createSlice({
         if (producto && producto.cantidad > 1) {producto.cantidad--;}},
 
         eliminarProducto: (state, action: PayloadAction<number>) => {
-        state.carrito = state.carrito.filter(articulo => articulo.id !== action.payload);}
+        state.carrito = state.carrito.filter(articulo => articulo.id !== action.payload);},
+
+        vaciarCarrito: (state) => {state.carrito = [];}
     }
 })
 
@@ -42,5 +44,6 @@ export const {
     incrementarCantidad,
     disminuirCantidad,
     eliminarProducto,
+    vaciarCarrito
 } = CarritoSlice.actions;
 export default CarritoSlice.reducer;
